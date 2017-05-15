@@ -47,22 +47,22 @@ public class ApplicationTest {
 			driver.findElement(By.xpath("//*[@id='ROOT-2521314']/div/div[2]/div[5]/div/div[5]/div/div[1]")).click();
 		}
 		Thread.sleep(4000);
-		WebElement table = driver
-				.findElement(By.xpath("//*[@id='ROOT-2521314']/div/div[2]/div[3]/div/div[3]/table/tbody/tr"));
-		//*[@id='ROOT-2521314']/div/div[2]/div[3]/div/div[3]-this is one xpath
+		WebElement table = driver.findElement(By.xpath("//*[@id='ROOT-2521314']/div/div[2]/div[3]/div/div[3]"));
+		// *[@id='ROOT-2521314']/div/div[2]/div[3]/div/div[3]-this is one xpath
+		// *[@id='ROOT-2521314']/div/div[2]/div[3]/div/div[3]/table/tbody/tr
 
-		List<WebElement> rows = table.findElements(By.tagName("td"));
+		List<WebElement> rows = table.findElements(By.tagName("tr"));
 
-		for (int rnum = 0; rnum < rows.size(); rnum++)
+		for (int i = 0; i < rows.size(); i++)
 
 		{
 
-			List<WebElement> columns = rows.get(rnum).findElements(By.tagName("tr"));
+			List<WebElement> cell = rows.get(i).findElements(By.tagName("td"));
 
-			for (int cnum = 0; cnum < columns.size(); cnum++)
+			for (int j = 0; j < cell.size(); j++)
 
 			{
-				String x1 = rows.get(rnum).getText();
+				String x1 = cell.get(j).getText();
 
 				System.out.println(x1);
 
