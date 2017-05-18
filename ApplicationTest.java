@@ -1,5 +1,6 @@
 package pac;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -34,11 +35,18 @@ public class ApplicationTest {
 			driver.findElement(By.xpath("//*[@id='ROOT-2521314']/div/div[2]/div[1]/div/div[3]/div")).click();
 			Thread.sleep(4000);
 
-			// i=0, id=3
-			// i=1, id =7
-			// i =2, id = 11
-			// i=3, id = 15
-			driver.findElement(By.xpath("//*[@id='gwt-uid-" + x + "']")).sendKeys("sobhan");
+			ArrayList array1 = new ArrayList();
+			array1.add("sobhan");
+			array1.add("praveen");
+			array1.add("kumar");
+			ArrayList array2 = new ArrayList();
+			array2.add("inturi");
+			array2.add("billampati");
+			array2.add("mallavarapu");
+			System.out.println(array1);
+			System.out.println(array2);
+
+			driver.findElement(By.xpath("//*[@id='gwt-uid-" + x + "']")).sendKeys(array1);
 
 			Thread.sleep(4000);
 			driver.findElement(By.xpath("//*[@id='gwt-uid-" + (x + 2) + "']")).sendKeys("inturi");
@@ -52,21 +60,17 @@ public class ApplicationTest {
 		// *[@id='ROOT-2521314']/div/div[2]/div[3]/div/div[3]/table/tbody/tr
 
 		List<WebElement> rows = table.findElements(By.tagName("tr"));
+		Assert.assertEquals(8, rows.size());
 
-		for (int i = 0; i < rows.size(); i++)
-
-		{
-
+		for (int i = 0; i < rows.size(); i++) {
 			List<WebElement> cell = rows.get(i).findElements(By.tagName("td"));
 
 			for (int j = 0; j < cell.size(); j++)
 
 			{
+
 				String x1 = cell.get(j).getText();
-
 				System.out.println(x1);
-
-				Assert.assertEquals(7, x1);
 
 			}
 
